@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 0 0% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 12%;
+
+    --primary: 0 0% 12%;
+    --primary-foreground: 40 33% 98%;
+
+    --secondary: 45 65% 52%;
+    --secondary-foreground: 0 0% 12%;
+
+    --muted: 40 20% 95%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 45 65% 52%;
+    --accent-foreground: 0 0% 12%;
+
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 40 15% 88%;
+    --input: 40 15% 88%;
+    --ring: 45 65% 52%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .prose-editorial {
+    @apply prose prose-neutral max-w-none prose-headings:font-serif prose-headings:font-semibold prose-a:text-gold-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg;
+  }
+
+  .section-container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .gold-underline {
+    @apply relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-10 after:bg-gold-400;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
