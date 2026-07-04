@@ -55,27 +55,29 @@ export function FashionRequestTeaser() {
             <p className="mb-4 text-xs font-semibold uppercase tracking-wide text-charcoal-400">
               Get quotes in minutes — free to post
             </p>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
-              <Input
-                value={serviceNeeded}
-                onChange={(e) => setServiceNeeded(e.target.value)}
-                placeholder="What do you need? e.g. Wedding dress"
-                className="h-12 flex-1 text-sm"
-              />
-              <select
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                className="flex h-12 w-full rounded-md border border-charcoal-200 bg-white px-3 text-sm text-charcoal-800 outline-none focus-visible:ring-2 focus-visible:ring-ring sm:w-40"
-              >
-                <option value="">Location</option>
-                {FEATURED_CITIES.map((c) => (
-                  <option key={c.slug} value={c.name}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-              <Button type="submit" size="lg" className="h-12 shrink-0">
-                Submit Request
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Input
+                  value={serviceNeeded}
+                  onChange={(e) => setServiceNeeded(e.target.value)}
+                  placeholder="What do you need? e.g. Wedding dress"
+                  className="h-12 flex-1 text-sm"
+                />
+                <select
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  className="flex h-12 w-full rounded-md border border-charcoal-200 bg-white px-3 text-sm text-charcoal-800 outline-none focus-visible:ring-2 focus-visible:ring-ring sm:w-40"
+                >
+                  <option value="">Location</option>
+                  {FEATURED_CITIES.map((c) => (
+                    <option key={c.slug} value={c.name}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <Button type="submit" size="lg" className="h-12 w-full">
+                Submit a Fashion Request
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </form>

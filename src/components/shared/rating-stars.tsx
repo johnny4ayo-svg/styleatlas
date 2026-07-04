@@ -14,6 +14,12 @@ export function RatingStars({
   reviewCount?: number;
   className?: string;
 }) {
+  if (typeof reviewCount === "number" && reviewCount === 0) {
+    return (
+      <span className={cn("text-sm font-medium text-gold-600", className)}>New on STYLEATLAS</span>
+    );
+  }
+
   return (
     <div className={cn("flex items-center gap-1", className)}>
       <div className="flex items-center">

@@ -83,7 +83,7 @@ export default async function HomePage() {
         <CTASection
           eyebrow="For Professionals"
           title="Grow your fashion business on STYLEATLAS"
-          description="Get discovered by thousands of customers searching for designers, brands, and stylists every month. Free to join — upgrade anytime."
+          description="Get discovered by customers searching for designers, brands, and stylists across Nigeria. Free to join, upgrade anytime."
           primaryLabel="List Your Business Free"
           primaryHref="/register?type=professional"
           secondaryLabel="View Pricing Plans"

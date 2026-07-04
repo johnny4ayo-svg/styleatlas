@@ -10,9 +10,13 @@ export function BlogPreview({ posts }: { posts: BlogPost[] }) {
     <section className="bg-ivory py-16 sm:py-20">
       <div className="section-container">
         <div className="mb-10 flex items-end justify-between">
-          <div>
+          <div className="max-w-xl">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">Fashion Guides &amp; Stories</p>
             <h2 className="font-serif text-3xl font-semibold text-charcoal-900 sm:text-4xl">The STYLEATLAS Journal</h2>
+            <p className="mt-3 text-charcoal-500">
+              Fashion guides, bridal tips, Aso Ebi trends, designer advice, and practical resources for Nigeria&apos;s
+              fashion community.
+            </p>
           </div>
           <Link href="/blog" className="hidden text-sm font-medium text-gold-600 hover:underline sm:block">
             Read more →

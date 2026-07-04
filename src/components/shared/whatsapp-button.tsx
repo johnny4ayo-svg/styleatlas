@@ -41,7 +41,7 @@ export function WhatsAppButton({
       className={cn(fullWidth && "w-full", className)}
     >
       <MessageCircle className="h-4 w-4" />
-      Chat on WhatsApp
+      Contact on WhatsApp
     </Button>
   );
 }
