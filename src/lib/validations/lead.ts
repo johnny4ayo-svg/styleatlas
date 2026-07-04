@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const leadFormSchema = z.object({
   name: z.string().trim().min(2, "Please enter your full name").max(120),
-  email: z.string().trim().email("Enter a valid email address"),
+  email: z.string().trim().email("Enter a valid email address").optional().or(z.literal("")),
   phone: z
     .string()
     .trim()

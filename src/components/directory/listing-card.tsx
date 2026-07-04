@@ -95,7 +95,7 @@ export function ListingCard({
           <Button asChild variant="outline" size="sm" className="flex-1">
             <Link href={`/designers/${listing.slug}`}>View Profile</Link>
           </Button>
-          {listing.whatsapp && (
+          {listing.whatsapp ? (
             <WhatsAppButton
               phone={listing.whatsapp}
               professionalAccountId={listing.id}
@@ -103,6 +103,10 @@ export function ListingCard({
               size="sm"
               className="flex-1"
             />
+          ) : (
+            <Button asChild variant="emerald" size="sm" className="flex-1">
+              <Link href={`/designers/${listing.slug}`}>Send Inquiry</Link>
+            </Button>
           )}
         </div>
       </div>

@@ -5,11 +5,11 @@ import {
   Crown,
   Images,
   MessageCircle,
+  Tag,
   Star,
   BadgeCheck,
   MapPinned,
   Megaphone,
-  BookOpen,
 } from "lucide-react";
 
 export const metadata = buildMetadata({
@@ -22,12 +22,12 @@ export const metadata = buildMetadata({
 const PROFESSIONAL_BENEFITS = [
   { icon: Crown, label: "Premium business profile" },
   { icon: Images, label: "Portfolio gallery" },
-  { icon: MessageCircle, label: "WhatsApp and contact buttons" },
+  { icon: MessageCircle, label: "WhatsApp contact" },
+  { icon: Tag, label: "Service and pricing display" },
   { icon: Star, label: "Customer reviews" },
   { icon: BadgeCheck, label: "Verification badge" },
-  { icon: MapPinned, label: "Location-based discovery" },
+  { icon: MapPinned, label: "City and category discovery" },
   { icon: Megaphone, label: "Featured listing options" },
-  { icon: BookOpen, label: "Blog and inspiration exposure" },
 ];
 
 export default function RegisterPage({
@@ -45,11 +45,11 @@ export default function RegisterPage({
             For Fashion Professionals
           </p>
           <h1 className="font-serif text-3xl font-semibold leading-tight sm:text-4xl">
-            Get Discovered by Customers Already Searching for Fashion Services
+            List Your Fashion Business on STYLEATLAS
           </h1>
           <p className="mt-4 max-w-md text-charcoal-300">
-            Create a professional STYLEATLAS profile, showcase your work, collect reviews, receive enquiries, and
-            build trust with customers across Nigeria.
+            Create a professional profile, showcase your work, receive enquiries, collect reviews, and get
+            discovered by customers searching for fashion services across Nigeria.
           </p>
 
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">

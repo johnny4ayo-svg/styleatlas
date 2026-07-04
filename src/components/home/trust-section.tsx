@@ -19,8 +19,8 @@ export function TrustSection() {
             Trusted by Nigeria&apos;s Growing Fashion Community
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-charcoal-300">
-            Every professional on STYLEATLAS goes through a moderation and verification process — so you can book
-            with confidence, not guesswork.
+            Compare verified profiles, portfolios, reviews, pricing, and availability before you contact a
+            professional.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">

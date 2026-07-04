@@ -30,7 +30,10 @@ export default async function DirectoryLandingPage() {
       </section>
 
       <section className="section-container py-14">
-        <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal-900">Browse by Category</h2>
+        <h2 className="font-serif text-2xl font-semibold text-charcoal-900">What Are You Looking For?</h2>
+        <p className="mb-6 mt-2 max-w-xl text-charcoal-500">
+          Start with what you need, then discover trusted fashion professionals who can help.
+        </p>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {topLevel.map((cat) => (
             <Link

@@ -290,7 +290,7 @@ export interface Lead {
   professional_account_id: string | null;
   customer_id: string | null;
   name: string;
-  email: string;
+  email: string | null;
   phone: string | null;
   whatsapp: string | null;
   city: string | null;

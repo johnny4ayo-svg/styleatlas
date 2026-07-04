@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Scissors, Gem, GraduationCap, Sparkles, Store, type LucideIcon } from "lucide-react";
+import { Scissors, Gem, GraduationCap, Sparkles, Ruler, Store, type LucideIcon } from "lucide-react";
 
 const NEEDS: {
   title: string;
@@ -32,6 +32,12 @@ const NEEDS: {
     icon: Sparkles,
   },
   {
+    title: "I Need a Tailor",
+    description: "Bespoke tailoring, alterations, and made-to-measure fittings.",
+    href: "/directory/tailors",
+    icon: Ruler,
+  },
+  {
     title: "I Sell Fashion Services",
     description: "Create a business profile and get discovered by customers looking for your exact service.",
     href: "/register?type=professional",
@@ -48,13 +54,16 @@ export function FeaturedCategories() {
           <h2 className="font-serif text-3xl font-semibold text-charcoal-900 sm:text-4xl">
             What Are You Looking For?
           </h2>
+          <p className="mt-2 max-w-md text-charcoal-500">
+            Start with what you need, then discover trusted fashion professionals who can help.
+          </p>
         </div>
         <Link href="/directory" className="hidden text-sm font-medium text-gold-600 hover:underline sm:block">
           Explore all categories →
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
         {NEEDS.map((need) => (
           <Link
             key={need.title}

@@ -51,29 +51,35 @@ export async function submitLead(input: SubmitLeadInput) {
     customerId = (profile as { id: string } | null)?.id ?? null;
   }
 
-  const { data: lead, error } = await supabase
-    .from("leads")
-    .insert({
-      source_type: input.sourceType,
-      source_page: input.sourcePage,
-      professional_account_id: input.professionalAccountId ?? null,
-      customer_id: customerId,
-      name: parsed.data.name,
-      email: parsed.data.email,
-      phone: parsed.data.phone || null,
-      whatsapp: parsed.data.whatsapp || null,
-      city: input.city ?? null,
-      state: input.state ?? null,
-      category_id: input.categoryId ?? null,
-      budget: parsed.data.budget || null,
-      message: parsed.data.message,
-      utm_source: input.utm?.source ?? null,
-      utm_medium: input.utm?.medium ?? null,
-      utm_campaign: input.utm?.campaign ?? null,
-      device_info: { userAgent: headers().get("user-agent") ?? null },
-    })
-    .select("id")
-    .single();
+  // Deliberately no .select() after this insert: the leads_select RLS
+  // policy only allows reading rows the caller owns (customer_id matches,
+  // or they manage the target professional_account_id) or is admin, which
+  // anonymous/no-target submissions never satisfy. Since PostgREST's
+  // insert-with-return requires the SELECT policy to pass on the
+  // RETURNING row, chaining .select().single() here made every anonymous
+  // lead submission (the common case for public contact/request forms)
+  // fail with an RLS error even though the INSERT itself is allowed by
+  // leads_public_insert. Nothing reads the id, so a plain insert avoids
+  // triggering that check.
+  const { error } = await supabase.from("leads").insert({
+    source_type: input.sourceType,
+    source_page: input.sourcePage,
+    professional_account_id: input.professionalAccountId ?? null,
+    customer_id: customerId,
+    name: parsed.data.name,
+    email: parsed.data.email || null,
+    phone: parsed.data.phone || null,
+    whatsapp: parsed.data.whatsapp || null,
+    city: input.city ?? null,
+    state: input.state ?? null,
+    category_id: input.categoryId ?? null,
+    budget: parsed.data.budget || null,
+    message: parsed.data.message,
+    utm_source: input.utm?.source ?? null,
+    utm_medium: input.utm?.medium ?? null,
+    utm_campaign: input.utm?.campaign ?? null,
+    device_info: { userAgent: headers().get("user-agent") ?? null },
+  });
 
   if (error) {
     console.error("submitLead insert failed", error.message);
@@ -102,5 +108,5 @@ export async function submitLead(input: SubmitLeadInput) {
     }
   }
 
-  return { success: true as const, leadId: (lead as { id: string }).id };
+  return { success: true as const };
 }

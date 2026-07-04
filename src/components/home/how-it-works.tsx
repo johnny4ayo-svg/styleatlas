@@ -13,8 +13,8 @@ const STEPS = [
   },
   {
     icon: CheckCircle2,
-    title: "Book with confidence",
-    description: "Compare verified reviews, portfolios, and pricing before you commit — no surprises.",
+    title: "Compare & decide",
+    description: "Compare verified profiles, portfolios, reviews, and pricing before you contact a professional.",
   },
 ];
 
