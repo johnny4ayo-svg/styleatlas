@@ -32,53 +32,71 @@ export function HeroSearch() {
     <div className="mx-auto w-full max-w-3xl">
       <form
         onSubmit={handleSearch}
-        className="flex flex-col gap-2 rounded-xl border border-charcoal-100 bg-white p-2 shadow-elevated sm:flex-row sm:items-center"
+        className="flex flex-col gap-1.5 rounded-2xl border border-gold-500/30 bg-white p-2.5 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] ring-1 ring-black/5 transition-shadow focus-within:ring-2 focus-within:ring-gold-500 sm:flex-row sm:items-stretch sm:gap-0"
       >
-        <div className="flex flex-1 items-center gap-2 rounded-lg px-3 py-2.5">
-          <Search className="h-4.5 w-4.5 shrink-0 text-charcoal-400" />
-          <input
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-            placeholder="Bridal gown, Aso Ebi, Ankara, stylist, fashion school"
-            className="w-full bg-transparent text-sm text-charcoal-800 outline-none placeholder:text-charcoal-400"
-          />
+        <div className="flex min-w-0 flex-1 items-center gap-2 rounded-xl px-3.5 py-2.5">
+          <Search className="h-5 w-5 shrink-0 text-gold-600" />
+          <div className="min-w-0 flex-1">
+            <label className="block whitespace-nowrap text-[10px] font-semibold uppercase tracking-wide text-charcoal-400">
+              Service
+            </label>
+            <input
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+              placeholder="Bridal gown, Aso Ebi, stylist…"
+              className="w-full truncate bg-transparent text-sm font-medium text-charcoal-900 outline-none placeholder:font-normal placeholder:text-charcoal-400"
+            />
+          </div>
         </div>
-        <div className="hidden items-center gap-2 border-l border-charcoal-100 px-3 py-2.5 sm:flex">
-          <MapPin className="h-4.5 w-4.5 shrink-0 text-charcoal-400" />
-          <select
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            className="w-32 bg-transparent text-sm text-charcoal-800 outline-none"
-          >
-            <option value="">Location</option>
-            {FEATURED_CITIES.map((c) => (
-              <option key={c.slug} value={c.name}>
-                {c.name}
-              </option>
-            ))}
-          </select>
+
+        <div className="hidden shrink-0 items-center gap-2 border-charcoal-100 px-3.5 py-2.5 sm:flex sm:border-l">
+          <MapPin className="h-5 w-5 shrink-0 text-gold-600" />
+          <div className="min-w-0">
+            <label className="block whitespace-nowrap text-[10px] font-semibold uppercase tracking-wide text-charcoal-400">
+              Location
+            </label>
+            <select
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              className="w-20 max-w-[6rem] bg-transparent text-sm font-medium text-charcoal-900 outline-none"
+            >
+              <option value="">Any city</option>
+              {FEATURED_CITIES.map((c) => (
+                <option key={c.slug} value={c.name}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-        <div className="hidden items-center gap-2 border-l border-charcoal-100 px-3 py-2.5 lg:flex">
-          <Wallet className="h-4.5 w-4.5 shrink-0 text-charcoal-400" />
-          <select
-            value={budget}
-            onChange={(e) => setBudget(e.target.value)}
-            className="w-32 bg-transparent text-sm text-charcoal-800 outline-none"
-          >
-            <option value="">Budget</option>
-            {PRICE_RANGES.map((p) => (
-              <option key={p.value} value={p.value}>
-                {BUDGET_LABELS[p.value]}
-              </option>
-            ))}
-          </select>
+
+        <div className="hidden shrink-0 items-center gap-2 border-charcoal-100 px-3.5 py-2.5 lg:flex lg:border-l">
+          <Wallet className="h-5 w-5 shrink-0 text-gold-600" />
+          <div className="min-w-0">
+            <label className="block whitespace-nowrap text-[10px] font-semibold uppercase tracking-wide text-charcoal-400">
+              Budget
+            </label>
+            <select
+              value={budget}
+              onChange={(e) => setBudget(e.target.value)}
+              className="w-24 max-w-[6.5rem] bg-transparent text-sm font-medium text-charcoal-900 outline-none"
+            >
+              <option value="">Any</option>
+              {PRICE_RANGES.map((p) => (
+                <option key={p.value} value={p.value}>
+                  {BUDGET_LABELS[p.value]}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-        <Button type="submit" size="lg" className="shrink-0">
-          Find Fashion Experts
+
+        <Button type="submit" size="lg" className="shrink-0 rounded-xl px-6 text-sm shadow-gold sm:text-base">
+          Find Experts
         </Button>
       </form>
 
-      <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+      <div className="mt-4 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
         <span className="text-xs font-medium uppercase tracking-wide text-charcoal-300">Popular:</span>
         {PROFESSIONAL_CATEGORIES.slice(0, 5).map((cat) => (
           <a

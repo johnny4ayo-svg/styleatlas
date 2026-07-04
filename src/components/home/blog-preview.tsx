@@ -11,8 +11,8 @@ export function BlogPreview({ posts }: { posts: BlogPost[] }) {
       <div className="section-container">
         <div className="mb-10 flex items-end justify-between">
           <div>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">The Journal</p>
-            <h2 className="font-serif text-3xl font-semibold text-charcoal-900 sm:text-4xl">From the Blog</h2>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">Fashion Guides &amp; Stories</p>
+            <h2 className="font-serif text-3xl font-semibold text-charcoal-900 sm:text-4xl">The STYLEATLAS Journal</h2>
           </div>
           <Link href="/blog" className="hidden text-sm font-medium text-gold-600 hover:underline sm:block">
             Read more →
