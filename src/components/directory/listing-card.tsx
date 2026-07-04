@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin } from "lucide-react";
+import { MapPin, CheckCircle2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { RatingStars } from "@/components/shared/rating-stars";
 import { VerifiedBadge, PlanBadge } from "@/components/shared/verified-badge";
 import { SaveButton } from "@/components/shared/save-button";
+import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import type { ProfessionalAccount } from "@/types";
 import { cn } from "@/lib/utils";
 
@@ -45,6 +47,12 @@ export function ListingCard({
           <div className="absolute right-3 top-3">
             <SaveButton entityType="professional_account" entityId={listing.id} initialSaved={saved} />
           </div>
+          {listing.availability_status === "available" && (
+            <div className="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
+              <CheckCircle2 className="h-3 w-3 text-emerald-400" />
+              Available
+            </div>
+          )}
         </div>
       </Link>
 
@@ -71,7 +79,7 @@ export function ListingCard({
           )}
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="mb-4 flex items-center justify-between">
           <RatingStars
             rating={listing.rating_average ?? 0}
             reviewCount={listing.review_count ?? 0}
@@ -80,6 +88,21 @@ export function ListingCard({
           />
           {listing.price_range && (
             <span className="text-sm font-semibold text-gold-600">{PRICE_LABEL[listing.price_range]}</span>
+          )}
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Button asChild variant="outline" size="sm" className="flex-1">
+            <Link href={`/designers/${listing.slug}`}>View Profile</Link>
+          </Button>
+          {listing.whatsapp && (
+            <WhatsAppButton
+              phone={listing.whatsapp}
+              professionalAccountId={listing.id}
+              sourcePage="homepage_listing_card"
+              size="sm"
+              className="flex-1"
+            />
           )}
         </div>
       </div>

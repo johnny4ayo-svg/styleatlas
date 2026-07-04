@@ -1,5 +1,7 @@
-import Image from "next/image";
+import Link from "next/link";
 import { HeroSearch } from "@/components/home/hero-search";
+import { HeroMockupCard } from "@/components/home/hero-mockup-card";
+import { Button } from "@/components/ui/button";
 import { FeaturedCategories } from "@/components/home/featured-categories";
 import { PremiumDesigners } from "@/components/home/premium-designers";
 import { OutfitGalleryPreview } from "@/components/home/outfit-gallery-preview";
@@ -9,6 +11,7 @@ import { VerifiedProfessionals } from "@/components/home/verified-professionals"
 import { LocationDiscovery } from "@/components/home/location-discovery";
 import { JobsEventsPreview } from "@/components/home/jobs-events-preview";
 import { BlogPreview } from "@/components/home/blog-preview";
+import { FashionRequestTeaser } from "@/components/home/fashion-request-teaser";
 import { CTASection } from "@/components/shared/cta-section";
 import { getFeaturedProfessionals, getVerifiedProfessionals } from "@/lib/data/professionals";
 import { getFeaturedOutfits } from "@/lib/data/outfits";
@@ -28,38 +31,39 @@ export default async function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden bg-charcoal-900 py-20 sm:py-28">
-        <div className="absolute inset-0 opacity-25">
-          <Image
-            src="/images/logo.png"
-            alt=""
-            fill
-            className="scale-150 object-cover object-center blur-2xl"
-            priority
-          />
-        </div>
-        <div className="section-container relative text-center">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-gold-400">
-            Nigeria&apos;s Trusted Fashion Directory
-          </p>
-          <h1 className="mx-auto max-w-3xl text-balance font-serif text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">
-            Discover Nigeria&apos;s Best Fashion Designers, Brands &amp; Style Experts
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl text-balance text-charcoal-200">
-            Search, compare, and connect with verified designers, bridal houses, stylists, and fashion schools —
-            all in one trusted, premium directory.
-          </p>
-          <div className="mt-10">
-            <HeroSearch />
+        <div className="section-container relative grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+          <div className="text-center lg:text-left">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-gold-500">
+              Nigeria&apos;s Premium Fashion Discovery Platform
+            </p>
+            <h1 className="text-balance font-serif text-4xl font-semibold text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.1]">
+              Find Verified Fashion Designers, Brands &amp; Style Experts Across Nigeria
+            </h1>
+            <p className="mx-auto mt-5 max-w-xl text-balance text-charcoal-200 lg:mx-0">
+              Discover trusted fashion designers, bridal houses, stylists, tailors, fashion schools, makeup
+              artists, and fabric vendors. Compare portfolios, reviews, pricing, locations, and availability
+              before you book.
+            </p>
+
+            <div className="mt-10">
+              <HeroSearch />
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+              <Button asChild size="lg">
+                <Link href="/directory">Find a Designer</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-white/20 bg-transparent text-white hover:bg-white/10">
+                <Link href="/register?type=professional">List Your Fashion Business</Link>
+              </Button>
+            </div>
+
+            <p className="mt-6 text-xs font-medium uppercase tracking-wide text-charcoal-300">
+              Verified profiles &middot; Real portfolios &middot; Customer reviews &middot; Direct WhatsApp contact
+            </p>
           </div>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-charcoal-300">
-            <a href="/register" className="underline-offset-4 hover:text-white hover:underline">
-              I&apos;m a customer, help me find a designer
-            </a>
-            <span className="text-charcoal-600">·</span>
-            <a href="/register?type=professional" className="underline-offset-4 hover:text-gold-400 hover:underline">
-              I&apos;m a professional, list my business
-            </a>
-          </div>
+
+          <HeroMockupCard />
         </div>
       </section>
 
@@ -70,18 +74,7 @@ export default async function HomePage() {
       <VerifiedProfessionals listings={verifiedProfessionals} />
       <LocationDiscovery />
 
-      <section className="section-container py-16 sm:py-20">
-        <CTASection
-          eyebrow="Marketplace"
-          title="Can't find exactly what you need?"
-          description="Post your fashion request — wedding gown, Aso Ebi for 10, children's outfit — and let matched professionals respond with quotes."
-          primaryLabel="Submit a Fashion Request"
-          primaryHref="/marketplace"
-          secondaryLabel="See how it works"
-          secondaryHref="/marketplace#how-it-works"
-          variant="gold"
-        />
-      </section>
+      <FashionRequestTeaser />
 
       <JobsEventsPreview jobs={recentJobs} events={upcomingEvents} />
       <BlogPreview posts={recentPosts} />
@@ -99,6 +92,17 @@ export default async function HomePage() {
       </section>
 
       <TrustSection />
+
+      <section className="section-container py-16 sm:py-20">
+        <CTASection
+          title="Ready to Find the Right Fashion Professional?"
+          description="Search verified designers, brands, stylists, schools, and fashion vendors across Nigeria."
+          primaryLabel="Start Searching"
+          primaryHref="/directory"
+          secondaryLabel="List Your Business"
+          secondaryHref="/register?type=professional"
+        />
+      </section>
     </>
   );
 }
